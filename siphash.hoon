@@ -9,7 +9,7 @@
 ?>  (lte (met 3 dat.m) wid.m)
 =.  k  (flim:sha k)
 =.  m  (flim:sha m)
-(fin (comp m (init dat.k)))
+(flim:sha (fin (comp m (init dat.k))))
 ::
 :: Initialise internal state
 ++  init
