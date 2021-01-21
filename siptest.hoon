@@ -1,3 +1,4 @@
+:: test the siphash library
 /+  *siphash
 ::
 :-  %say
@@ -11,11 +12,15 @@
   "all 64 tests passed"
 "{(scow %ud (lent results))} tests failed"
 |%
+:: Call siphash with test bytestring and compare results
 ++  test
   |=  [num=@ud hash=@]
   ?:  =(hash +:(siphash k (ranger num)))
     %.y
   %.n
+::
+:: generate bytestring like 0x0001020304[...]
+:: with length = test number
 ++  ranger
   |=  num=@ud
   =|  m=@
@@ -24,8 +29,10 @@
   ?:  =(inc num)
     [num m]
   $(m (cat 3 inc m), inc (add inc 1))
-::    
+::
+:: key for testing    
 ++  k  [16 0x1.0203.0405.0607.0809.0a0b.0c0d.0e0f]
+:: list of hashes for comparison
 ++  vectors  
   ^-  (list [@ud @])
   :~  [0 0x310e.0edd.47db.6f72]
