@@ -1,7 +1,7 @@
 :: siphash-2-4
-!:
 ::
-|^
+|%
+++  siphash
 |=  [k=byts m=byts]
 ^-  byts
 ?>  =(wid.k 16)
