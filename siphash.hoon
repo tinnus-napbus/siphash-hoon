@@ -4,9 +4,12 @@
 ++  siphash
 |=  [k=byts m=byts]
 ^-  byts
-?>  =(wid.k 16)
-?>  (lte (met 3 dat.k) wid.k)
-?>  (lte (met 3 dat.m) wid.m)
+?.  =(wid.k 16)
+  ~|(%k-not-128-bit !!)
+?.  (lte (met 3 dat.k) wid.k)
+  ~|(%k-dat-gth-wid !!)
+?.  (lte (met 3 dat.m) wid.m)
+  ~|(%m-dat-gth-wid !!)
 =.  k  (flim:sha k)
 =.  m  (flim:sha m)
 (flim:sha (fin (comp m (init dat.k))))
